@@ -12,54 +12,30 @@ setTimeout(() => {
     preloader.classList.add('hidden');
 }, 4000);
 
-// 3D Parallax mountains
-let mouseX = 0, mouseY = 0;
-let targetX = 0, targetY = 0;
-let scrollProgress = 0;
-
-function updateMountains() {
-    const layers = document.querySelectorAll('.parallax-layer');
-    const fog1 = document.querySelector('.fog-1');
-    const fog2 = document.querySelector('.fog-2');
-
-    layers.forEach(layer => {
-        const speed = parseFloat(layer.dataset.speed) || 0;
-        const translateY = scrollProgress * speed * 200;
-        const rotateX = targetY * speed * 6;
-        const rotateY = targetX * speed * 6;
-        const translateZ = speed * 30;
-        layer.style.transform = `translateY(${translateY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
-    });
-
-    if (fog1) {
-        fog1.style.transform = `translateY(${scrollProgress * 15}px)`;
-    }
-    if (fog2) {
-        fog2.style.transform = `translateY(${scrollProgress * 20}px)`;
-    }
-}
-
-function animate3D() {
-    targetX += (mouseX - targetX) * 0.05;
-    targetY += (mouseY - targetY) * 0.05;
-    updateMountains();
-    requestAnimationFrame(animate3D);
-}
-
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
     header.classList.toggle('scrolled', window.scrollY > 50);
 
+    // Parallax mountains
+    const scrolled = window.scrollY;
     const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-    scrollProgress = Math.min(window.scrollY / maxScroll, 1);
-});
+    const progress = Math.min(scrolled / maxScroll, 1);
 
-document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-});
+    document.querySelectorAll('.parallax-layer').forEach(layer => {
+        const speed = parseFloat(layer.dataset.speed) || 0;
+        const translateY = progress * speed * 200;
+        layer.style.transform = `translateY(${translateY}px)`;
+    });
 
-animate3D();
+    const fog1 = document.querySelector('.fog-1');
+    const fog2 = document.querySelector('.fog-2');
+    if (fog1) {
+        fog1.style.transform = `translateY(${progress * 15}px)`;
+    }
+    if (fog2) {
+        fog2.style.transform = `translateY(${progress * 20}px)`;
+    }
+});
 
 document.getElementById('nav-toggle').addEventListener('click', () => {
     const nav = document.getElementById('nav-list');
