@@ -1618,6 +1618,8 @@ body.dark-mode .theme-toggle:hover .toggle-track {
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
+    perspective: 800px;
+    transform-style: preserve-3d;
 }
 
 .parallax-layer {
@@ -1628,6 +1630,8 @@ body.dark-mode .theme-toggle:hover .toggle-track {
     height: 55vh;
     min-height: 300px;
     will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 
 .parallax-svg {
