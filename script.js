@@ -15,6 +15,26 @@ setTimeout(() => {
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
     header.classList.toggle('scrolled', window.scrollY > 50);
+
+    // Parallax mountains
+    const scrolled = window.scrollY;
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    const progress = Math.min(scrolled / maxScroll, 1);
+
+    document.querySelectorAll('.parallax-layer').forEach(layer => {
+        const speed = parseFloat(layer.dataset.speed) || 0;
+        const translateY = progress * speed * 200;
+        layer.style.transform = `translateY(${translateY}px)`;
+    });
+
+    const fog1 = document.querySelector('.fog-1');
+    const fog2 = document.querySelector('.fog-2');
+    if (fog1) {
+        fog1.style.transform = `translateY(${progress * 15}px)`;
+    }
+    if (fog2) {
+        fog2.style.transform = `translateY(${progress * 20}px)`;
+    }
 });
 
 document.getElementById('nav-toggle').addEventListener('click', () => {
