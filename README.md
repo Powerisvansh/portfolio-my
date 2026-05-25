@@ -108,13 +108,17 @@ No build tools, no dependencies — just open and go.
     <img src="https://img.shields.io/badge/Website-%23FFB6C1?style=for-the-badge&logo=google-chrome&logoColor=black" alt="Website">
   </a>
   &nbsp;
-  <a href="mailto:hello@webworks.in">
+  <a href="mailto:vanshdhimang9@gmail.com">
     <img src="https://img.shields.io/badge/Email-%23D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
+  </a>
+  &nbsp;
+  <a href="https://www.instagram.com/devloper.vansh" target="_blank">
+    <img src="https://img.shields.io/badge/Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
   </a>
 </div>
 
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by <strong>Web Works</strong></sub>
+  <sub>Built with ❤️ by <strong>Vansh Dhiman</strong></sub>
 </div>
