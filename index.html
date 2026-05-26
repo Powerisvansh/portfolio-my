@@ -3,54 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Web Works — Professional web development services. I build custom websites, e-commerce stores, and landing pages for businesses. View real projects, client testimonials, and pricing. Services include web development, UI/UX design, SEO, CMS integration, and ongoing maintenance. Based in India.">
-    <meta name="keywords" content="web developer, website design, business website, e-commerce development, custom website, responsive design, SEO, web development India, freelance web developer, portfolio">
+    <meta name="description" content="Tell us about your project. Fill out our inquiry form and we'll get back to you within 24 hours.">
     <meta name="author" content="Web Works">
-    <meta property="og:title" content="Web Works — Professional Web Development Portfolio">
-    <meta property="og:description" content="Custom websites, e-commerce stores, and landing pages built for real businesses. Web development, UI/UX design, SEO, and ongoing support.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://webworks.in">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Web Works — Professional Web Development">
-    <meta name="twitter:description" content="I build custom websites that help businesses grow. View my portfolio and get in touch.">
-    <title>Web Works — Professional Web Development Portfolio</title>
+    <title>Project Inquiry — Web Works</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23FFB6C1'/><text x='50' y='68' font-family='Arial' font-size='48' font-weight='bold' fill='white' text-anchor='middle'>W</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .inquiry {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+        }
+
+        .inquiry-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 24px;
+            padding: 56px 48px;
+            max-width: 720px;
+            width: 100%;
+            margin: 0 auto;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .inquiry-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .inquiry-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+
+        .inquiry-title span {
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .inquiry-sub {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+
+        .form-group label span {
+            color: #FF69B4;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            background: var(--bg-section);
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+            color: var(--text-heading);
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #FFB6C1;
+            box-shadow: 0 0 0 3px rgba(255,182,193,0.15);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .form-group select option {
+            background: var(--bg-card);
+            color: var(--text-heading);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .inquiry-form .btn {
+            align-self: flex-start;
+            margin-top: 6px;
+        }
+
+        .inquiry-form .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .inquiry-card {
+                padding: 36px 24px;
+                border-radius: 16px;
+            }
+            .inquiry-title {
+                font-size: 1.4rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .inquiry-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .inquiry {
+                padding: 100px 0 60px;
+            }
+            .inquiry-card {
+                padding: 28px 18px;
+            }
+            .inquiry-title {
+                font-size: 1.2rem;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 12px 14px;
+                font-size: 0.88rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Parallax Mountain Background -->
-  <div class="parallax-bg" aria-hidden="true">
-    <!-- Blue mountains (back) -->
-    <div class="parallax-layer" data-speed="0.05">
-      <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
-        <path class="mount-blue" d="M-100,600 L-100,150 Q80,110 200,170 Q350,250 500,120 Q640,20 780,160 Q920,290 1060,130 Q1200,20 1340,150 Q1440,180 1540,150 L1540,600 Z"/>
-        <path class="mount-blue-2" d="M-100,600 L-100,200 Q120,150 260,230 Q440,320 580,180 Q720,60 900,220 Q1060,370 1220,200 Q1360,100 1540,190 L1540,600 Z"/>
-      </svg>
+    <!-- Parallax Background -->
+    <div class="parallax-bg" aria-hidden="true">
+        <div class="parallax-layer" data-speed="0.05">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-blue" d="M-100,600 L-100,150 Q80,110 200,170 Q350,250 500,120 Q640,20 780,160 Q920,290 1060,130 Q1200,20 1340,150 Q1440,180 1540,150 L1540,600 Z"/>
+                <path class="mount-blue-2" d="M-100,600 L-100,200 Q120,150 260,230 Q440,320 580,180 Q720,60 900,220 Q1060,370 1220,200 Q1360,100 1540,190 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="parallax-layer" data-speed="0.12">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-pink" d="M-100,600 L-100,240 Q120,200 260,270 Q440,350 580,230 Q720,130 860,270 Q1000,400 1140,260 Q1280,170 1540,250 L1540,600 Z"/>
+                <path class="mount-pink-2" d="M-100,600 L-100,280 Q200,230 360,300 Q540,380 680,270 Q820,170 980,310 Q1140,430 1300,280 Q1440,210 1540,270 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="parallax-layer" data-speed="0.22">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-white" d="M-100,600 L-100,330 Q100,290 200,340 Q340,400 460,330 Q580,260 720,350 Q860,440 1000,360 Q1140,280 1280,350 Q1440,410 1540,360 L1540,600 Z"/>
+                <path class="mount-white-2" d="M-100,600 L-100,380 Q180,340 340,390 Q520,450 680,380 Q840,310 1000,400 Q1160,480 1320,390 Q1440,340 1540,390 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="fog-layer fog-1"></div>
+        <div class="fog-layer fog-2"></div>
     </div>
-    <!-- Pink mountains (mid) -->
-    <div class="parallax-layer" data-speed="0.12">
-      <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
-        <path class="mount-pink" d="M-100,600 L-100,240 Q120,200 260,270 Q440,350 580,230 Q720,130 860,270 Q1000,400 1140,260 Q1280,170 1540,250 L1540,600 Z"/>
-        <path class="mount-pink-2" d="M-100,600 L-100,280 Q200,230 360,300 Q540,380 680,270 Q820,170 980,310 Q1140,430 1300,280 Q1440,210 1540,270 L1540,600 Z"/>
-      </svg>
-    </div>
-    <!-- White mountains (front) -->
-    <div class="parallax-layer" data-speed="0.22">
-      <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
-        <path class="mount-white" d="M-100,600 L-100,330 Q100,290 200,340 Q340,400 460,330 Q580,260 720,350 Q860,440 1000,360 Q1140,280 1280,350 Q1440,410 1540,360 L1540,600 Z"/>
-        <path class="mount-white-2" d="M-100,600 L-100,380 Q180,340 340,390 Q520,450 680,380 Q840,310 1000,400 Q1160,480 1320,390 Q1440,340 1540,390 L1540,600 Z"/>
-      </svg>
-    </div>
-    <div class="fog-layer fog-1"></div>
-    <div class="fog-layer fog-2"></div>
-  </div>
 
-
-    <!-- Preloader / Skeleton Screen -->
+    <!-- Preloader -->
     <div id="preloader">
         <div class="skeleton">
             <div class="sk-container">
@@ -58,116 +223,14 @@
                     <div class="sk-block sk-logo" style="width:120px;height:24px"></div>
                     <div class="sk-nav-links">
                         <div class="sk-block" style="width:50px;height:14px"></div>
-                        <div class="sk-block" style="width:50px;height:14px"></div>
-                        <div class="sk-block" style="width:60px;height:14px"></div>
-                        <div class="sk-block" style="width:80px;height:14px"></div>
-                        <div class="sk-block" style="width:60px;height:14px"></div>
                     </div>
                 </div>
-                <div class="sk-hero">
-                    <div class="sk-hero-left">
-                        <div class="sk-block" style="width:140px;height:20px;border-radius:100px"></div>
-                        <div class="sk-block" style="width:90%;height:38px;margin-top:18px"></div>
-                        <div class="sk-block" style="width:70%;height:38px;margin-top:6px"></div>
-                        <div class="sk-block" style="width:80%;height:16px;margin-top:20px"></div>
-                        <div class="sk-block" style="width:55%;height:16px;margin-top:6px"></div>
-                        <div class="sk-hero-btns">
-                            <div class="sk-block" style="width:160px;height:48px;border-radius:8px"></div>
-                            <div class="sk-block" style="width:140px;height:48px;border-radius:8px"></div>
-                        </div>
-                    </div>
-                    <div class="sk-hero-right">
-                        <div class="sk-block" style="width:100%;height:100%;border-radius:16px"></div>
-                    </div>
-                </div>
-
-                <div class="sk-section sk-about">
-                    <div class="sk-block" style="width:200px;height:32px;margin:0 auto"></div>
-                    <div class="sk-block" style="width:320px;height:16px;margin:12px auto 0"></div>
-                    <div class="sk-about-grid">
-                        <div class="sk-about-left">
-                            <div class="sk-block" style="width:100%;height:60px"></div>
-                            <div class="sk-stats">
-                                <div class="sk-block" style="height:80px;border-radius:12px"></div>
-                                <div class="sk-block" style="height:80px;border-radius:12px"></div>
-                                <div class="sk-block" style="height:80px;border-radius:12px"></div>
-                            </div>
-                        </div>
-                        <div class="sk-about-right">
-                            <div class="sk-block" style="width:100%;height:16px;margin-bottom:20px"></div>
-                            <div class="sk-block" style="width:100%;height:8px;border-radius:100px"></div>
-                            <div class="sk-block" style="width:80%;height:8px;border-radius:100px;margin-top:20px"></div>
-                            <div class="sk-block" style="width:100%;height:8px;border-radius:100px;margin-top:28px"></div>
-                            <div class="sk-block" style="width:70%;height:8px;border-radius:100px;margin-top:20px"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sk-section sk-projects">
-                    <div class="sk-block" style="width:260px;height:32px;margin:0 auto"></div>
-                    <div class="sk-block" style="width:240px;height:16px;margin:12px auto 0"></div>
-                    <div class="sk-filters">
-                        <div class="sk-block" style="width:60px;height:36px;border-radius:100px"></div>
-                        <div class="sk-block" style="width:80px;height:36px;border-radius:100px"></div>
-                        <div class="sk-block" style="width:100px;height:36px;border-radius:100px"></div>
-                        <div class="sk-block" style="width:80px;height:36px;border-radius:100px"></div>
-                        <div class="sk-block" style="width:70px;height:36px;border-radius:100px"></div>
-                    </div>
-                    <div class="sk-project-grid">
-                        <div class="sk-block" style="height:320px;border-radius:16px"></div>
-                        <div class="sk-block" style="height:320px;border-radius:16px"></div>
-                        <div class="sk-block" style="height:320px;border-radius:16px"></div>
-                    </div>
-                </div>
-
-                <div class="sk-section sk-testimonials">
-                    <div class="sk-block" style="width:220px;height:32px;margin:0 auto"></div>
-                    <div class="sk-block" style="width:300px;height:16px;margin:12px auto 0"></div>
-                    <div class="sk-test-grid">
-                        <div class="sk-block" style="height:200px;border-radius:16px"></div>
-                        <div class="sk-block" style="height:200px;border-radius:16px"></div>
-                        <div class="sk-block" style="height:200px;border-radius:16px"></div>
-                    </div>
-                </div>
-
-                <div class="sk-section sk-pricing">
-                    <div class="sk-block" style="width:200px;height:32px;margin:0 auto"></div>
-                    <div class="sk-block" style="width:280px;height:16px;margin:12px auto 0"></div>
-                    <div class="sk-pricing-grid">
-                        <div class="sk-block" style="height:400px;border-radius:16px"></div>
-                        <div class="sk-block" style="height:400px;border-radius:16px"></div>
-                        <div class="sk-block" style="height:400px;border-radius:16px"></div>
-                    </div>
-                </div>
-
-                <div class="sk-section sk-faq">
-                    <div class="sk-block" style="width:160px;height:32px;margin:0 auto"></div>
-                    <div class="sk-block" style="width:260px;height:16px;margin:12px auto 0"></div>
-                    <div class="sk-faq-list" style="margin-top:40px">
-                        <div class="sk-block" style="width:100%;height:60px;border-radius:12px;margin-bottom:12px"></div>
-                        <div class="sk-block" style="width:100%;height:60px;border-radius:12px;margin-bottom:12px"></div>
-                        <div class="sk-block" style="width:100%;height:60px;border-radius:12px;margin-bottom:12px"></div>
-                        <div class="sk-block" style="width:100%;height:60px;border-radius:12px;margin-bottom:12px"></div>
-                    </div>
-                </div>
-
-                <div class="sk-section sk-contact">
-                    <div class="sk-block" style="width:280px;height:32px;margin:0 auto"></div>
-                    <div class="sk-block" style="width:260px;height:16px;margin:12px auto 0"></div>
-                    <div class="sk-contact-grid">
-                        <div class="sk-contact-left">
-                            <div class="sk-block" style="width:100%;height:60px;border-radius:12px"></div>
-                            <div class="sk-block" style="width:100%;height:60px;border-radius:12px;margin-top:16px"></div>
-                            <div class="sk-block" style="width:100%;height:60px;border-radius:12px;margin-top:16px"></div>
-                        </div>
-                        <div class="sk-contact-right">
-                            <div class="sk-block" style="width:100%;height:48px;border-radius:10px"></div>
-                            <div class="sk-block" style="width:100%;height:48px;border-radius:10px;margin-top:16px"></div>
-                            <div class="sk-block" style="width:100%;height:48px;border-radius:10px;margin-top:16px"></div>
-                            <div class="sk-block" style="width:100%;height:120px;border-radius:10px;margin-top:16px"></div>
-                            <div class="sk-block" style="width:160px;height:48px;border-radius:8px;margin-top:16px"></div>
-                        </div>
-                    </div>
+                <div class="sk-inquiry" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:24px">
+                    <div class="sk-block" style="width:72px;height:72px;border-radius:50%"></div>
+                    <div class="sk-block" style="width:280px;height:32px;border-radius:8px"></div>
+                    <div class="sk-block" style="width:360px;height:16px;border-radius:8px"></div>
+                    <div class="sk-block" style="width:100%;height:400px;border-radius:16px;margin-top:12px"></div>
+                    <div class="sk-block" style="width:180px;height:48px;border-radius:8px;margin-top:8px"></div>
                 </div>
             </div>
         </div>
@@ -176,17 +239,9 @@
     <!-- Navbar -->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#home" class="nav-logo">Web<span>Works</span></a>
+            <a href="portfolio.html" class="nav-logo">Web<span>Works</span></a>
             <ul class="nav-list" id="nav-list">
-                <li><a href="#home" class="nav-link active-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#process" class="nav-link">Process</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="#pricing" class="nav-link">Pricing</a></li>
-                <li><a href="#faq" class="nav-link">FAQ</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="portfolio.html" class="nav-link">Home</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                 <div class="toggle-track">
@@ -202,590 +257,73 @@
         </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero section" id="home">
-        <div class="hero-container container">
-            <div class="hero-content">
-                <span class="hero-subtitle">Web Developer & Designer</span>
-                <h1 class="hero-title">I Build <span>Professional Websites</span> That Drive Results</h1>
-                <p class="hero-desc">Showcasing real websites built for businesses — from clean corporate sites to full-featured e-commerce platforms.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn btn-primary">
-                        <span>View My Work</span>
-                        <i class="fas fa-arrow-down"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <span>Let's Talk</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-shape"></div>
-                <img src="images/hero.svg" alt="Web Development">
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section class="about section" id="about">
+    <!-- Inquiry -->
+    <section class="inquiry section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">Passionate about crafting digital experiences</p>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I build clean, fast, and responsive websites that help businesses establish a strong online presence. Each project below is a real site I've designed and developed from the ground up.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-num" data-target="25">0</span>
-                            <span class="stat-label">Projects Done</span>
+            <div class="inquiry-card">
+                <div class="inquiry-icon">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <h1 class="inquiry-title">Let's Build Your <span>Next Project</span></h1>
+                <p class="inquiry-sub">Tell me about your project and I'll get back to you within 24 hours with a custom proposal.</p>
+                <form class="inquiry-form" id="inquiry-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name <span>*</span></label>
+                            <input type="text" name="name" placeholder="John Doe" required>
                         </div>
-                        <div class="stat">
-                            <span class="stat-num" data-target="20">0</span>
-                            <span class="stat-label">Happy Clients</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num" data-target="3">0</span>
-                            <span class="stat-label">Years Experience</span>
+                        <div class="form-group">
+                            <label>Email Address <span>*</span></label>
+                            <input type="email" name="email" placeholder="john@example.com" required>
                         </div>
                     </div>
-                </div>
-                <div class="about-skills">
-                    <div class="skill">
-                        <span>HTML & CSS</span>
-                        <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
-                    </div>
-                    <div class="skill">
-                        <span>JavaScript</span>
-                        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                    </div>
-                    <div class="skill">
-                        <span>React</span>
-                        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-                    </div>
-                    <div class="skill">
-                        <span>UI/UX Design</span>
-                        <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services section" id="services">
-        <div class="container">
-            <h2 class="section-title">What I Offer</h2>
-            <p class="section-subtitle">Everything you need to establish a powerful online presence</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-code"></i></div>
-                    <h3>Web Development</h3>
-                    <p>Custom-coded, responsive websites built with clean HTML, CSS, and JavaScript. No page builders, no bloat — just fast, lightweight code that works everywhere.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> Responsive layouts</li>
-                        <li><i class="fas fa-check"></i> Cross-browser compatible</li>
-                        <li><i class="fas fa-check"></i> Performance optimized</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>UI/UX Design</h3>
-                    <p>Modern, user-friendly interfaces designed to convert visitors into customers. Wireframes, prototypes, and pixel-perfect designs tailored to your brand.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> Brand-aligned design</li>
-                        <li><i class="fas fa-check"></i> Mobile-first approach</li>
-                        <li><i class="fas fa-check"></i> Usability testing</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <h3>E-Commerce Solutions</h3>
-                    <p>Full-featured online stores with product management, cart, checkout, and payment integration. Built to scale from a handful of products to thousands.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> Product catalog</li>
-                        <li><i class="fas fa-check"></i> Secure checkout</li>
-                        <li><i class="fas fa-check"></i> Inventory management</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-search"></i></div>
-                    <h3>SEO & Optimization</h3>
-                    <p>On-page SEO, performance tuning, and accessibility improvements to help your site rank higher and load faster. Every site gets a solid SEO foundation.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> On-page SEO</li>
-                        <li><i class="fas fa-check"></i> Core Web Vitals</li>
-                        <li><i class="fas fa-check"></i> Accessibility (WCAG)</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-database"></i></div>
-                    <h3>Backend & CMS</h3>
-                    <p>Custom dashboards, admin panels, and content management systems that make it easy to update your site without touching code.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> Custom admin panels</li>
-                        <li><i class="fas fa-check"></i> Content management</li>
-                        <li><i class="fas fa-check"></i> API integration</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-headset"></i></div>
-                    <h3>Maintenance & Support</h3>
-                    <p>Ongoing updates, security patches, backups, and technical support so your site stays secure and runs smoothly month after month.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> Regular updates</li>
-                        <li><i class="fas fa-check"></i> Security monitoring</li>
-                        <li><i class="fas fa-check"></i> Priority support</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process -->
-    <section class="process section" id="process">
-        <div class="container">
-            <h2 class="section-title">How I Work</h2>
-            <p class="section-subtitle">A simple, transparent process from start to launch</p>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <div class="step-content">
-                        <h3>Discovery</h3>
-                        <p>We discuss your goals, target audience, and vision. I learn about your business and what makes it unique so the website truly represents you.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">02</div>
-                    <div class="step-content">
-                        <h3>Design</h3>
-                        <p>I create wireframes and high-fidelity mockups for your review. You see exactly what your site will look like before a single line of code is written.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">03</div>
-                    <div class="step-content">
-                        <h3>Development</h3>
-                        <p>I build your site with clean, semantic code. Responsive design, performance optimization, and SEO best practices are baked in from day one.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">04</div>
-                    <div class="step-content">
-                        <h3>Launch & Support</h3>
-                        <p>After your final review, I deploy the site and provide ongoing support. Your site is live, tested, and ready to grow your business.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="projects section" id="projects">
-        <div class="container">
-            <h2 class="section-title">Websites I've Built</h2>
-            <p class="section-subtitle">Real projects for real businesses</p>
-
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="business">Business</button>
-                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-                <button class="filter-btn" data-filter="portfolio">Portfolio</button>
-                <button class="filter-btn" data-filter="landing">Landing</button>
-            </div>
-
-            <div class="project-grid">
-
-                <div class="project-card" data-category="business">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project1.svg" alt="Corporate Website preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="+1 (555) 000-0000">
                         </div>
-                        <div class="project-info">
-                            <span class="project-tag">Business</span>
-                            <h3>Corporate Website</h3>
-                            <p>A clean, professional website for a local business with service listings and contact forms.</p>
+                        <div class="form-group">
+                            <label>Budget Range</label>
+                            <select name="budget">
+                                <option value="" disabled selected>Select a range</option>
+                                <option value="under-500">Under $500</option>
+                                <option value="500-1000">$500 – $1,000</option>
+                                <option value="1000-2500">$1,000 – $2,500</option>
+                                <option value="2500-5000">$2,500 – $5,000</option>
+                                <option value="5000-plus">$5,000+</option>
+                                <option value="not-sure">Not sure yet</option>
+                            </select>
                         </div>
-                    </a>
-                </div>
-
-                <div class="project-card" data-category="ecommerce">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project2.svg" alt="Online Store preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-tag">E-Commerce</span>
-                            <h3>Online Store</h3>
-                            <p>Full-featured e-commerce platform with product catalog, cart, and checkout system.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card" data-category="portfolio">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project3.svg" alt="Photographer Portfolio preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-tag">Portfolio</span>
-                            <h3>Photographer Portfolio</h3>
-                            <p>A visually stunning portfolio for a freelance photographer with gallery and booking.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card" data-category="business">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project4.svg" alt="Restaurant Website preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-tag">Business</span>
-                            <h3>Restaurant Website</h3>
-                            <p>Interactive menu display, online reservations, and location info for a fine dining restaurant.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card" data-category="landing">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project5.svg" alt="Blog Platform preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-tag">Landing</span>
-                            <h3>Blog Platform</h3>
-                            <p>Modern blog with categorized articles, search, and a clean reading experience.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card" data-category="landing">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project6.svg" alt="Startup Landing Page preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-tag">Landing</span>
-                            <h3>Startup Landing Page</h3>
-                            <p>High-converting landing page with hero, features, pricing, and sign-up flow.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card" data-category="business">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project1.svg" alt="Real Estate Site preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-tag">Business</span>
-                            <h3>Real Estate Portal</h3>
-                            <p>Property listing platform with advanced search filters, image galleries, and inquiry forms for a growing real estate agency.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card" data-category="ecommerce">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project2.svg" alt="Fashion Store preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-tag">E-Commerce</span>
-                            <h3>Fashion Boutique</h3>
-                            <p>Trend-driven fashion store with lookbooks, size guides, wishlists, and a seamless mobile checkout experience.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-card" data-category="portfolio">
-                    <a href="#" class="project-card-link" target="_blank" rel="noopener noreferrer">
-                        <div class="project-img">
-                            <img src="images/project3.svg" alt="Artist Portfolio preview">
-                            <div class="project-overlay">
-                                <span class="project-link"><i class="fas fa-external-link-alt"></i> View Live</span>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-tag">Portfolio</span>
-                            <h3>Artist Showcase</h3>
-                            <p>Minimal, immersive portfolio for a visual artist with a full-screen gallery, lightbox viewer, and commission inquiry system.</p>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials section" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Clients Say</h2>
-            <p class="section-subtitle">Feedback from businesses I've worked with</p>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"The website exceeded our expectations. Professional, fast, and beautiful. Highly recommend!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"><i class="fas fa-user"></i></div>
-                        <div>
-                            <h4>Rajesh Kumar</h4>
-                            <span>Business Owner</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Amazing work! Our online sales increased by 40% after the new site launched. Very responsive and talented."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"><i class="fas fa-user"></i></div>
-                        <div>
-                            <h4>Priya Sharma</h4>
-                            <span>Store Owner</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Delivered on time and exactly what we needed. Great communication throughout the project."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"><i class="fas fa-user"></i></div>
-                        <div>
-                            <h4>Amit Verma</h4>
-                            <span>Startup Founder</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"The redesign doubled our lead generation within the first month. Professional, creative, and responsive to feedback throughout."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"><i class="fas fa-user"></i></div>
-                        <div>
-                            <h4>Neha Gupta</h4>
-                            <span>Marketing Director</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"I've worked with several developers, and this was by far the smoothest experience. The site is beautiful and our customers love it."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"><i class="fas fa-user"></i></div>
-                        <div>
-                            <h4>Vikram Singh</h4>
-                            <span>Clinic Owner</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section class="pricing section" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Simple Pricing</h2>
-            <p class="section-subtitle">Transparent plans with no hidden fees</p>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Starter</h3>
-                        <div class="pricing-price"><span class="price">&dollar;499</span> <span class="price-dur">one-time</span></div>
-                        <p>Perfect for small businesses getting started online</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 5-page responsive website</li>
-                        <li><i class="fas fa-check"></i> Mobile-optimized design</li>
-                        <li><i class="fas fa-check"></i> Contact form integration</li>
-                        <li><i class="fas fa-check"></i> Basic SEO setup</li>
-                        <li><i class="fas fa-check"></i> Social media links</li>
-                        <li><i class="fas fa-check"></i> 1 month support</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline pricing-btn">Get Started</a>
-                </div>
-                <div class="pricing-card pricing-featured">
-                    <div class="pricing-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3>Business</h3>
-                        <div class="pricing-price"><span class="price">&dollar;999</span> <span class="price-dur">one-time</span></div>
-                        <p>Ideal for growing businesses that need more firepower</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Up to 10-page responsive site</li>
-                        <li><i class="fas fa-check"></i> Custom UI/UX design</li>
-                        <li><i class="fas fa-check"></i> CMS integration</li>
-                        <li><i class="fas fa-check"></i> Advanced SEO & analytics</li>
-                        <li><i class="fas fa-check"></i> Blog/news section</li>
-                        <li><i class="fas fa-check"></i> 3 months support</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary pricing-btn">Get Started</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>E-Commerce</h3>
-                        <div class="pricing-price"><span class="price">&dollar;1,999</span> <span class="price-dur">one-time</span></div>
-                        <p>For businesses ready to sell online</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Full e-commerce store</li>
-                        <li><i class="fas fa-check"></i> Product catalog (unlimited)</li>
-                        <li><i class="fas fa-check"></i> Shopping cart & checkout</li>
-                        <li><i class="fas fa-check"></i> Payment gateway setup</li>
-                        <li><i class="fas fa-check"></i> Inventory management</li>
-                        <li><i class="fas fa-check"></i> 6 months support</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline pricing-btn">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq section" id="faq">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle">Everything you need to know before getting started</p>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How long does it take to build a website?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Typical timelines range from 1&ndash;2 weeks for a starter site to 4&ndash;6 weeks for a full e-commerce platform. The exact timeline depends on complexity, content readiness, and how quickly feedback is provided during the review stages.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do I need to have content ready?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Not at all. I can help craft your content, suggest structure, and even write placeholder copy during the design phase. However, having your branding assets (logo, colors, images) ready upfront helps speed things up.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Will my website be mobile-friendly?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutely. Every site I build is mobile-first and fully responsive. It will look and function perfectly on phones, tablets, and desktops. Mobile responsiveness is tested thoroughly before launch.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do you offer hosting or domain services?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>I don't sell hosting directly, but I help you choose a reliable provider and handle the full setup and deployment. I recommend options starting as low as &dollar;5/month that work great for small to medium business sites.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What if I need changes after the site is live?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Every package includes a support period with free minor updates. For ongoing maintenance, I offer affordable monthly retainer plans that cover updates, backups, security monitoring, and priority support.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Can I see examples of your previous work?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Of course! Browse the Projects section above to see real sites I've built. Each project card links to the live site so you can explore them firsthand. I'm also happy to share more relevant examples during our call.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p class="section-subtitle">Have a project in mind? Let's build something great.</p>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <a href="mailto:vanshdhimang9@gmail.com">vanshdhimang9@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <a href="tel:+919548274807">+91 95482 74807</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <span>India</span>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
+                        <label>Service Needed <span>*</span></label>
+                        <select name="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="web-dev">Web Development</option>
+                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="ecommerce">E-Commerce Solutions</option>
+                            <option value="seo">SEO & Optimization</option>
+                            <option value="cms">Backend & CMS</option>
+                            <option value="maintenance">Maintenance & Support</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="subject" placeholder="Subject">
+                        <label>Project Details <span>*</span></label>
+                        <textarea name="details" rows="5" placeholder="Describe your project, goals, and any specific requirements..." required></textarea>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <label>Timeline</label>
+                        <select name="timeline">
+                            <option value="" disabled selected>Select a timeline</option>
+                            <option value="urgent">ASAP (1–2 weeks)</option>
+                            <option value="standard">Standard (3–4 weeks)</option>
+                            <option value="relaxed">Relaxed (1–2 months)</option>
+                            <option value="flexible">Flexible / Not sure</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">
-                        <span>Send Message</span>
+                        <span>Submit Inquiry</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
@@ -804,13 +342,13 @@
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="portfolio.html">Home</a></li>
+                        <li><a href="portfolio.html#about">About</a></li>
+                        <li><a href="portfolio.html#services">Services</a></li>
+                        <li><a href="portfolio.html#projects">Projects</a></li>
+                        <li><a href="portfolio.html#pricing">Pricing</a></li>
+                        <li><a href="portfolio.html#faq">FAQ</a></li>
+                        <li><a href="portfolio.html#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
@@ -836,5 +374,44 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            if (toggle) {
+                var clone = toggle.cloneNode(true);
+                toggle.parentNode.replaceChild(clone, toggle);
+                var saved = localStorage.getItem('theme');
+                if (saved === 'dark') document.body.classList.add('dark-mode');
+                clone.addEventListener('click', function () {
+                    var dark = document.body.classList.toggle('dark-mode');
+                    localStorage.setItem('theme', dark ? 'dark' : 'light');
+                });
+            }
+
+            var form = document.getElementById('inquiry-form');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var btn = this.querySelector('.btn');
+                    var original = btn.innerHTML;
+                    btn.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>';
+                    btn.disabled = true;
+
+                    setTimeout(function () {
+                        var params = new URLSearchParams();
+                        var inputs = form.querySelectorAll('input, select, textarea');
+                        for (var i = 0; i < inputs.length; i++) {
+                            var input = inputs[i];
+                            if (input.name && input.value) {
+                                params.set(input.name, input.value);
+                            }
+                        }
+
+                        window.location.href = 'thank-you.html?' + params.toString();
+                    }, 1200);
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
