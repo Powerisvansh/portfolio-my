@@ -150,22 +150,25 @@ if (stats) observer.observe(stats);
 const skills = document.querySelector('.about-skills');
 if (skills) observer.observe(skills);
 
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const btn = this.querySelector('.btn');
-    const original = btn.innerHTML;
-    btn.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>';
-    btn.disabled = true;
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = this.querySelector('.btn');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>';
+        btn.disabled = true;
 
-    setTimeout(() => {
-        btn.innerHTML = '<span>Message Sent!</span> <i class="fas fa-check"></i>';
-        this.reset();
         setTimeout(() => {
-            btn.innerHTML = original;
-            btn.disabled = false;
-        }, 2000);
-    }, 1500);
-});
+            btn.innerHTML = '<span>Message Sent!</span> <i class="fas fa-check"></i>';
+            this.reset();
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.disabled = false;
+            }, 2000);
+        }, 1500);
+    });
+}
 
 document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {

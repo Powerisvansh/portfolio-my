@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for your purchase! Your order has been confirmed and is being processed.">
+    <meta name="author" content="Web Works">
+    <title>Order Confirmed — Web Works</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23FFB6C1'/><text x='50' y='68' font-family='Arial' font-size='48' font-weight='bold' fill='white' text-anchor='middle'>W</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .thankyou {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .thankyou-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 24px;
+            padding: 60px 48px;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+        }
+
+        .thankyou-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            color: #fff;
+            animation: thankyou-bounce 0.6s ease;
+        }
+
+        @keyframes thankyou-bounce {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .thankyou-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+
+        .thankyou-title span {
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .thankyou-sub {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .thankyou-details {
+            background: var(--bg-section);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .thankyou-details h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #FFB6C1;
+            margin-bottom: 16px;
+        }
+
+        .thankyou-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.92rem;
+        }
+
+        .thankyou-row:last-child {
+            border-bottom: none;
+        }
+
+        .thankyou-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .thankyou-row span:last-child {
+            color: var(--text-heading);
+            font-weight: 500;
+        }
+
+        .thankyou-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .thankyou-actions .btn {
+            min-width: 220px;
+            justify-content: center;
+        }
+
+        .thankyou-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .thankyou-card {
+                padding: 40px 24px;
+            }
+            .thankyou-title {
+                font-size: 1.5rem;
+            }
+            .thankyou-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .thankyou {
+                padding: 100px 0 60px;
+            }
+            .thankyou-card {
+                padding: 32px 20px;
+                border-radius: 16px;
+            }
+            .thankyou-title {
+                font-size: 1.3rem;
+            }
+            .thankyou-details {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Parallax Background -->
+    <div class="parallax-bg" aria-hidden="true">
+        <div class="parallax-layer" data-speed="0.05">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-blue" d="M-100,600 L-100,150 Q80,110 200,170 Q350,250 500,120 Q640,20 780,160 Q920,290 1060,130 Q1200,20 1340,150 Q1440,180 1540,150 L1540,600 Z"/>
+                <path class="mount-blue-2" d="M-100,600 L-100,200 Q120,150 260,230 Q440,320 580,180 Q720,60 900,220 Q1060,370 1220,200 Q1360,100 1540,190 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="parallax-layer" data-speed="0.12">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-pink" d="M-100,600 L-100,240 Q120,200 260,270 Q440,350 580,230 Q720,130 860,270 Q1000,400 1140,260 Q1280,170 1540,250 L1540,600 Z"/>
+                <path class="mount-pink-2" d="M-100,600 L-100,280 Q200,230 360,300 Q540,380 680,270 Q820,170 980,310 Q1140,430 1300,280 Q1440,210 1540,270 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="parallax-layer" data-speed="0.22">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-white" d="M-100,600 L-100,330 Q100,290 200,340 Q340,400 460,330 Q580,260 720,350 Q860,440 1000,360 Q1140,280 1280,350 Q1440,410 1540,360 L1540,600 Z"/>
+                <path class="mount-white-2" d="M-100,600 L-100,380 Q180,340 340,390 Q520,450 680,380 Q840,310 1000,400 Q1160,480 1320,390 Q1440,340 1540,390 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="fog-layer fog-1"></div>
+        <div class="fog-layer fog-2"></div>
+    </div>
+
+    <!-- Preloader / Skeleton Screen -->
+    <div id="preloader">
+        <div class="skeleton">
+            <div class="sk-container">
+                <div class="sk-nav">
+                    <div class="sk-block sk-logo" style="width:120px;height:24px"></div>
+                    <div class="sk-nav-links">
+                        <div class="sk-block" style="width:50px;height:14px"></div>
+                    </div>
+                </div>
+                <div class="sk-thankyou" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:24px">
+                    <div class="sk-block" style="width:80px;height:80px;border-radius:50%"></div>
+                    <div class="sk-block" style="width:260px;height:32px;border-radius:8px"></div>
+                    <div class="sk-block" style="width:340px;height:16px;border-radius:8px"></div>
+                    <div class="sk-block" style="width:400px;height:200px;border-radius:16px;margin-top:12px"></div>
+                    <div class="sk-block" style="width:200px;height:48px;border-radius:8px;margin-top:12px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">Web<span>Works</span></a>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <div class="toggle-track">
+                    <div class="toggle-thumb">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </div>
+            </button>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Thank You -->
+    <section class="thankyou section">
+        <div class="container">
+            <div class="thankyou-card">
+                <div class="thankyou-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h1 class="thankyou-title">Thank You, <span>Order Confirmed!</span></h1>
+                <p class="thankyou-sub">
+                    Your purchase has been received and is being processed. You'll receive a confirmation email shortly with your order details and next steps.
+                </p>
+                <div class="thankyou-details">
+                    <h4>Order Summary</h4>
+                    <div class="thankyou-row">
+                        <span>Order Number</span>
+                        <span>WW-<span id="order-num">------</span></span>
+                    </div>
+                    <div class="thankyou-row">
+                        <span>Date</span>
+                        <span id="order-date"></span>
+                    </div>
+                    <div class="thankyou-row">
+                        <span>Status</span>
+                        <span style="color:#22c55e;font-weight:600">Confirmed</span>
+                    </div>
+                </div>
+                <div class="thankyou-actions">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Home</span>
+                    </a>
+                    <a href="index.html#contact" class="btn btn-outline">
+                        <span>Contact Support</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <p class="thankyou-note">
+                    <i class="fas fa-clock"></i> You can expect a follow-up within 24 hours.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Web<span>Works</span></h3>
+                    <p>Building websites that help businesses grow.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="https://github.com/Powerisvansh" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/vanshdhiman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/vanshdhiman" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/devloper.vansh" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WebWorks. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        (function () {
+            var orderNum = document.getElementById('order-num');
+            var orderDate = document.getElementById('order-date');
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var order = urlParams.get('order');
+
+            if (order) {
+                orderNum.textContent = order;
+            } else {
+                var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                var id = '';
+                for (var i = 0; i < 8; i++) {
+                    id += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                orderNum.textContent = id;
+            }
+
+            var now = new Date();
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            orderDate.textContent = now.toLocaleDateString('en-US', options);
+        })();
+    </script>
+</body>
+</html>
