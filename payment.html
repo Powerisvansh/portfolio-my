@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your purchase securely. Choose your plan and enter payment details.">
+    <meta name="author" content="Web Works">
+    <title>Checkout — Web Works</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23FFB6C1'/><text x='50' y='68' font-family='Arial' font-size='48' font-weight='bold' fill='white' text-anchor='middle'>W</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .payment {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+        }
+
+        .payment-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 680px;
+            width: 100%;
+            margin: 0 auto;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .payment-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.6rem;
+            color: #fff;
+        }
+
+        .payment-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 6px;
+        }
+
+        .payment-title span {
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .payment-sub {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .payment-summary {
+            background: var(--bg-section);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .payment-summary h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #FFB6C1;
+            margin-bottom: 16px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.92rem;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+            border-top: 2px solid var(--border-card);
+            margin-top: 4px;
+            padding-top: 14px;
+            font-weight: 700;
+        }
+
+        .summary-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .summary-row span:last-child {
+            color: var(--text-heading);
+            font-weight: 500;
+        }
+
+        .summary-row:last-child span:last-child {
+            color: #FF69B4;
+            font-size: 1.2rem;
+        }
+
+        .payment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group label span {
+            color: #FF69B4;
+        }
+
+        .form-group .input-wrap {
+            position: relative;
+        }
+
+        .form-group .input-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            background: var(--bg-section);
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+            color: var(--text-heading);
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group .input-wrap input {
+            padding-left: 40px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #FFB6C1;
+            box-shadow: 0 0 0 3px rgba(255,182,193,0.15);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .payment-error {
+            display: none;
+            background: rgba(255, 80, 80, 0.1);
+            border: 1px solid rgba(255, 80, 80, 0.25);
+            border-radius: 10px;
+            padding: 14px 18px;
+            color: #e74c3c;
+            font-size: 0.88rem;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .payment-error i {
+            font-size: 1rem;
+        }
+
+        .payment-error.show {
+            display: flex;
+        }
+
+        .payment-form .btn {
+            margin-top: 6px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .payment-form .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .payment-card {
+                padding: 32px 24px;
+                border-radius: 16px;
+            }
+            .payment-title {
+                font-size: 1.3rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .payment-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .payment {
+                padding: 100px 0 60px;
+            }
+            .payment-card {
+                padding: 24px 16px;
+            }
+            .payment-summary {
+                padding: 16px;
+            }
+            .form-group input,
+            .form-group select {
+                padding: 12px 14px;
+                font-size: 0.88rem;
+            }
+            .form-group .input-wrap input {
+                padding-left: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Parallax Background -->
+    <div class="parallax-bg" aria-hidden="true">
+        <div class="parallax-layer" data-speed="0.05">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-blue" d="M-100,600 L-100,150 Q80,110 200,170 Q350,250 500,120 Q640,20 780,160 Q920,290 1060,130 Q1200,20 1340,150 Q1440,180 1540,150 L1540,600 Z"/>
+                <path class="mount-blue-2" d="M-100,600 L-100,200 Q120,150 260,230 Q440,320 580,180 Q720,60 900,220 Q1060,370 1220,200 Q1360,100 1540,190 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="parallax-layer" data-speed="0.12">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-pink" d="M-100,600 L-100,240 Q120,200 260,270 Q440,350 580,230 Q720,130 860,270 Q1000,400 1140,260 Q1280,170 1540,250 L1540,600 Z"/>
+                <path class="mount-pink-2" d="M-100,600 L-100,280 Q200,230 360,300 Q540,380 680,270 Q820,170 980,310 Q1140,430 1300,280 Q1440,210 1540,270 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="parallax-layer" data-speed="0.22">
+            <svg class="parallax-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+                <path class="mount-white" d="M-100,600 L-100,330 Q100,290 200,340 Q340,400 460,330 Q580,260 720,350 Q860,440 1000,360 Q1140,280 1280,350 Q1440,410 1540,360 L1540,600 Z"/>
+                <path class="mount-white-2" d="M-100,600 L-100,380 Q180,340 340,390 Q520,450 680,380 Q840,310 1000,400 Q1160,480 1320,390 Q1440,340 1540,390 L1540,600 Z"/>
+            </svg>
+        </div>
+        <div class="fog-layer fog-1"></div>
+        <div class="fog-layer fog-2"></div>
+    </div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="skeleton">
+            <div class="sk-container">
+                <div class="sk-nav">
+                    <div class="sk-block sk-logo" style="width:120px;height:24px"></div>
+                    <div class="sk-nav-links">
+                        <div class="sk-block" style="width:50px;height:14px"></div>
+                    </div>
+                </div>
+                <div class="sk-payment" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:24px">
+                    <div class="sk-block" style="width:68px;height:68px;border-radius:50%"></div>
+                    <div class="sk-block" style="width:240px;height:32px;border-radius:8px"></div>
+                    <div class="sk-block" style="width:300px;height:16px;border-radius:8px"></div>
+                    <div class="sk-block" style="width:100%;height:300px;border-radius:16px;margin-top:12px"></div>
+                    <div class="sk-block" style="width:100%;height:200px;border-radius:16px;margin-top:12px"></div>
+                    <div class="sk-block" style="width:100%;height:48px;border-radius:8px;margin-top:12px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="portfolio.html" class="nav-logo">Web<span>Works</span></a>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="portfolio.html" class="nav-link">Home</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <div class="toggle-track">
+                    <div class="toggle-thumb">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </div>
+            </button>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Payment -->
+    <section class="payment section">
+        <div class="container">
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="payment-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h1 class="payment-title">Complete Your <span>Purchase</span></h1>
+                    <p class="payment-sub">Secure checkout — your information is encrypted.</p>
+                </div>
+
+                <div class="payment-summary" id="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-row">
+                        <span>Plan</span>
+                        <span id="summary-plan">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Price</span>
+                        <span id="summary-price">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total</span>
+                        <span id="summary-total">—</span>
+                    </div>
+                </div>
+
+                <form class="payment-form" id="payment-form">
+                    <div class="payment-error" id="payment-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="error-msg">Payment failed. Please check your details and try again.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Card Number <span>*</span></label>
+                        <div class="input-wrap">
+                            <i class="fas fa-credit-card"></i>
+                            <input type="text" id="card-number" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cardholder Name <span>*</span></label>
+                        <div class="input-wrap">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="card-name" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date <span>*</span></label>
+                            <div class="input-wrap">
+                                <i class="fas fa-calendar"></i>
+                                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>CVV <span>*</span></label>
+                            <div class="input-wrap">
+                                <i class="fas fa-lock"></i>
+                                <input type="text" id="card-cvv" inputmode="numeric" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span>Pay Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Web<span>Works</span></h3>
+                    <p>Building websites that help businesses grow.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="portfolio.html">Home</a></li>
+                        <li><a href="portfolio.html#about">About</a></li>
+                        <li><a href="portfolio.html#services">Services</a></li>
+                        <li><a href="portfolio.html#projects">Projects</a></li>
+                        <li><a href="portfolio.html#pricing">Pricing</a></li>
+                        <li><a href="portfolio.html#faq">FAQ</a></li>
+                        <li><a href="portfolio.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="https://github.com/Powerisvansh" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/vanshdhiman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/vanshdhiman" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/devloper.vansh" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WebWorks. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            if (toggle) {
+                var clone = toggle.cloneNode(true);
+                toggle.parentNode.replaceChild(clone, toggle);
+                var saved = localStorage.getItem('theme');
+                if (saved === 'dark') document.body.classList.add('dark-mode');
+                clone.addEventListener('click', function () {
+                    var dark = document.body.classList.toggle('dark-mode');
+                    localStorage.setItem('theme', dark ? 'dark' : 'light');
+                });
+            }
+
+            var plans = {
+                starter: { name: 'Starter', price: 499 },
+                business: { name: 'Business', price: 999 },
+                ecommerce: { name: 'E-Commerce', price: 1999 }
+            };
+
+            var params = new URLSearchParams(window.location.search);
+            var planKey = params.get('plan');
+
+            if (planKey && plans[planKey]) {
+                var plan = plans[planKey];
+                document.getElementById('summary-plan').textContent = plan.name;
+                document.getElementById('summary-price').textContent = '$' + plan.price;
+                document.getElementById('summary-total').textContent = '$' + plan.price;
+            } else {
+                document.getElementById('summary-plan').textContent = 'Custom';
+                document.getElementById('summary-price').textContent = '—';
+                document.getElementById('summary-total').textContent = '—';
+            }
+
+            function formatCardNumber(value) {
+                return value.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim().substring(0, 19);
+            }
+
+            var cardInput = document.getElementById('card-number');
+            if (cardInput) {
+                cardInput.addEventListener('input', function () {
+                    var raw = this.value.replace(/\D/g, '');
+                    this.value = formatCardNumber(raw);
+                });
+            }
+
+            var expiryInput = document.getElementById('card-expiry');
+            if (expiryInput) {
+                expiryInput.addEventListener('input', function () {
+                    var raw = this.value.replace(/\D/g, '');
+                    if (raw.length >= 2) {
+                        this.value = raw.substring(0, 2) + '/' + raw.substring(2, 4);
+                    } else {
+                        this.value = raw;
+                    }
+                });
+            }
+
+            var cvvInput = document.getElementById('card-cvv');
+            if (cvvInput) {
+                cvvInput.addEventListener('input', function () {
+                    this.value = this.value.replace(/\D/g, '');
+                });
+            }
+
+            var form = document.getElementById('payment-form');
+            var errorBox = document.getElementById('payment-error');
+
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var btn = this.querySelector('.btn');
+                    errorBox.classList.remove('show');
+
+                    var cardNum = document.getElementById('card-number').value.replace(/\s/g, '');
+                    var cardName = document.getElementById('card-name').value.trim();
+                    var expiry = document.getElementById('card-expiry').value.trim();
+                    var cvv = document.getElementById('card-cvv').value.trim();
+
+                    if (cardNum.length < 16 || !cardName || !expiry || cvv.length < 3) {
+                        document.getElementById('error-msg').textContent = 'Please fill in all fields correctly.';
+                        errorBox.classList.add('show');
+                        return;
+                    }
+
+                    btn.innerHTML = '<span>Processing...</span> <i class="fas fa-spinner fa-spin"></i>';
+                    btn.disabled = true;
+
+                    setTimeout(function () {
+                        var success = Math.random() > 0.3;
+                        if (success) {
+                            var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                            var order = '';
+                            for (var i = 0; i < 8; i++) {
+                                order += chars.charAt(Math.floor(Math.random() * chars.length));
+                            }
+                            window.location.href = 'thank-you.html?order=' + order + '&plan=' + (planKey || 'custom');
+                        } else {
+                            btn.innerHTML = '<span>Pay Now</span> <i class="fas fa-arrow-right"></i>';
+                            btn.disabled = false;
+                            document.getElementById('error-msg').textContent = 'Transaction declined. Please try a different card or contact your bank.';
+                            errorBox.classList.add('show');
+                        }
+                    }, 2000);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

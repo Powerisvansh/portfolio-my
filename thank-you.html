@@ -247,6 +247,10 @@
                         <span>WW-<span id="order-num">------</span></span>
                     </div>
                     <div class="thankyou-row">
+                        <span>Plan</span>
+                        <span id="thankyou-plan">—</span>
+                    </div>
+                    <div class="thankyou-row">
                         <span>Date</span>
                         <span id="order-date"></span>
                     </div>
@@ -330,8 +334,8 @@
             }
 
             var orderNum = document.getElementById('order-num');
+            var thankyouPlan = document.getElementById('thankyou-plan');
             var orderDate = document.getElementById('order-date');
-
             var urlParams = new URLSearchParams(window.location.search);
             var order = urlParams.get('order');
 
@@ -344,6 +348,16 @@
                     id += chars.charAt(Math.floor(Math.random() * chars.length));
                 }
                 orderNum.textContent = id;
+            }
+
+            var planNames = { starter: 'Starter', business: 'Business', ecommerce: 'E-Commerce' };
+            var plan = urlParams.get('plan');
+            if (plan && planNames[plan]) {
+                thankyouPlan.textContent = planNames[plan] + ' Plan';
+            } else if (plan) {
+                thankyouPlan.textContent = plan;
+            } else {
+                thankyouPlan.textContent = 'Custom';
             }
 
             var now = new Date();
